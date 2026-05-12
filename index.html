@@ -1,38 +1,98 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOUL DUST STREAM</title>
+const TMDB_KEY = 'b50c94712e233654a22d62f77f7384b3';
 
-<link rel="stylesheet" href="style.css">
-</head>
+async function getTrending() {
+    try {
 
-<body>
+        const response = await fetch(
+            `https://api.themoviedb.org/3/trending/movie/week?api_key=${TMDB_KEY}`
+        );
 
-<header>
-    <h1>🎬 SOUL DUST STREAM</h1>
-</header>
+        const data = await response.json();
 
-<section class="live-tv">
-    <h2>📺 LIVE TV</h2>
+        const display = document.getElementById('movie-display');
 
-    <div class="channels">
-        <button onclick="playLive('sabc1')">SABC 1</button>
-        <button onclick="playLive('sabc2')">SABC 2</button>
-        <button onclick="playLive('sabc3')">SABC 3</button>
-        <button onclick="playLive('e.tv')">eTV</button>
-    </div>
-</section>
+        display.innerHTML = data.results.map(movie => `
+            <div class="movie-card" onclick="streamMovie('${movie.id}')">
 
-<section class="movies">
-    <h2>🔥 Trending Movies</h2>
-    <div id="movie-display"></div>
-</section>
+                <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
 
-<div id="player-zone"></div>
+                <div class="card-info">
+                    <h4>${movie.title}</h4>
 
-<script src="script.js"></script>
+                    <p>
+                        ${movie.release_date ? movie.release_date.split('-')[0] : 'N/A'}
+                    </p>
+                </div>
 
-</body>
-</html>
+            </div>
+        `).join('');
+
+    } catch (error) {
+        console.error("Error fetching movies:", error);
+    }
+}
+
+function streamMovie(id) {
+
+    const playerContainer = document.getElementById('player-zone');
+
+    playerContainer.innerHTML = `
+        <div class="video-wrapper">
+
+            <button onclick="closePlayer()" class="close-btn">
+                X CLOSE
+            </button>
+
+            <iframe 
+                src="https://vidsrc.to/embed/movie/${id}" 
+                allowfullscreen>
+            </iframe>
+
+        </div>
+    `;
+
+    playerContainer.style.display = 'flex';
+}
+
+function playLive(channel) {
+
+    let streamUrl = "";
+
+    if(channel === 'sabc1')
+        streamUrl = "https://sabc-plus.com/live/320/SABC-1";
+
+    if(channel === 'sabc2')
+        streamUrl = "https://sabc-plus.com/live/321/SABC-2";
+
+    if(channel === 'sabc3')
+        streamUrl = "https://sabc-plus.com/live/322/S3";
+
+    if(channel === 'e.tv')
+        streamUrl = "https://watch.evod.co.za/live-tv/etv/live_533134591782";
+
+    const playerContainer = document.getElementById('player-zone');
+
+    playerContainer.innerHTML = `
+        <div class="video-wrapper">
+
+            <button onclick="closePlayer()" class="close-btn">
+                X CLOSE
+            </button>
+
+            <iframe 
+                src="${streamUrl}" 
+                allowfullscreen>
+            </iframe>
+
+        </div>
+    `;
+
+    playerContainer.style.display = 'flex';
+}
+
+function closePlayer() {
+    document.getElementById('player-zone').style.display = 'none';
+    document.getElementById('player-zone').innerHTML = '';
+}
+
+window.onload = getTrending;
