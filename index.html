@@ -4,9 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SOUL DUST MOVIES</title>
-
     <link rel="stylesheet" href="style.css" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -15,7 +13,6 @@
 
     <header class="navbar">
         <div class="logo">SOUL DUST</div>
-
         <nav>
             <a href="#">Home</a>
             <a href="#movies">Movies</a>
@@ -25,14 +22,10 @@
 
     <section class="hero">
         <div class="hero-overlay"></div>
-
         <div class="hero-content">
             <h1>Unlimited Movies & Entertainment</h1>
             <p>Watch trending movies and South African live TV.</p>
-
-            <button onclick="scrollToMovies()" class="hero-btn">
-                ▶ Watch Now
-            </button>
+            <button onclick="scrollToMovies()" class="hero-btn">▶ Watch Now</button>
         </div>
     </section>
 
@@ -40,12 +33,11 @@
         <div class="section-header">
             <h2>📺 Live TV</h2>
         </div>
-
         <div class="channels">
-            <button onclick="playLive('sabc1')">SABC 1</button>
-            <button onclick="playLive('sabc2')">SABC 2</button>
-            <button onclick="playLive('sabc3')">SABC 3</button>
-            <button onclick="playLive('e.tv')">eTV</button>
+            <button class="chan-btn" onclick="playLive('SABC 1', 'https://www.youtube.com/embed/live_stream?channel=SABC1')">SABC 1</button>
+            <button class="chan-btn" onclick="playLive('SABC 2', 'https://www.youtube.com/embed/live_stream?channel=SABC2')">SABC 2</button>
+            <button class="chan-btn" onclick="playLive('SABC 3', 'https://www.youtube.com/embed/live_stream?channel=SABC3')">SABC 3</button>
+            <button class="chan-btn" onclick="playLive('eTV', 'https://www.youtube.com/embed/live_stream?channel=ETV')">eTV</button>
         </div>
     </section>
 
@@ -53,11 +45,15 @@
         <div class="section-header">
             <h2>🔥 Trending Movies</h2>
         </div>
-
-        <div id="movie-display"></div>
+        <div id="movie-display" class="movie-grid"></div>
     </section>
 
-    <div id="player-zone"></div>
+    <!-- This is where the video will pop up -->
+    <div id="player-zone" class="player-container">
+        <div id="video-wrapper">
+            <p style="color:white;">Select a channel or movie to start watching.</p>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
