@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SOUL DUST MOVIES</title>
+    <!-- This line tells the browser to look for your CSS file -->
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,10 +35,10 @@
             <h2>📺 Live TV</h2>
         </div>
         <div class="channels">
-            <button class="chan-btn" onclick="playLive('SABC 1', 'sabc1')">SABC 1</button>
-            <button class="chan-btn" onclick="playLive('SABC 2', 'sabc2')">SABC 2</button>
-            <button class="chan-btn" onclick="playLive('SABC 3', 'sabc3')">SABC 3</button>
-            <button class="chan-btn" onclick="playLive('eTV', 'etv')">eTV</button>
+            <!-- These call functions inside your script.js -->
+            <button class="chan-btn" onclick="playLive('SABC 1', 'https://www.youtube.com/embed/live_stream?channel=SABC1')">SABC 1</button>
+            <button class="chan-btn" onclick="playLive('SABC 2', 'https://www.youtube.com/embed/live_stream?channel=SABC2')">SABC 2</button>
+            <button class="chan-btn" onclick="playLive('eTV', 'https://www.youtube.com/embed/live_stream?channel=ETV')">eTV</button>
         </div>
     </section>
 
@@ -50,10 +51,11 @@
 
     <div id="player-zone" class="player-container">
         <div id="video-wrapper">
-            <p style="color:white;">Select a channel or movie to start watching.</p>
+            <p style="color:white;">Select a channel to start watching.</p>
         </div>
     </div>
 
+    <!-- This line tells the browser to run your JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
