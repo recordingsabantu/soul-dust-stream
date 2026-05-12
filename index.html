@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SOUL DUST MOVIES | Premium Streaming</title>
+    <title>SOUL DUST | Premium Streaming</title>
     <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -15,43 +15,45 @@
             <a href="#">Home</a>
             <a href="#tv">Live TV</a>
             <a href="#movies">Movies</a>
-            <a href="#download-section">Downloads</a>
         </nav>
     </header>
 
     <section class="hero">
         <div class="hero-content">
-            <span class="trending-tag">#1 IN SOUTH AFRICA TODAY</span>
+            <span class="trending-tag">#1 IN SOUTH AFRICA</span>
             <h1>Unlimited Movies & Live TV</h1>
-            <p>Experience the best of Mzansi and global entertainment in 4K.</p>
+            <p>Stream trending local hits and global blockbusters in high definition.</p>
             <div class="hero-btns">
-                <button onclick="scrollToMovies()" class="btn-primary">▶ Play Now</button>
-                <button class="btn-secondary">＋ My List</button>
+                <button onclick="scrollToSection('movies')" class="btn-play">▶ Play Now</button>
+                <button class="btn-list">＋ My List</button>
             </div>
         </div>
     </section>
 
     <main>
+        <!-- The Video Player (Hidden until a movie is clicked) -->
         <section id="player-zone" class="player-section hidden">
-            <div class="section-header">
+            <div class="player-header">
                 <h2 id="now-playing-title">Now Playing</h2>
-                <button class="close-player" onclick="closePlayer()">✕ Close</button>
+                <button class="close-btn" onclick="closePlayer()">✕ Close</button>
             </div>
             <div id="video-wrapper"></div>
-            <div class="player-actions">
-                <button id="download-btn" class="btn-download">⬇ Download Movie</button>
-            </div>
-        </main>
-
-        <section class="content-row" id="tv">
-            <h2>📺 Live Channels</h2>
-            <div class="channel-grid">
-                <button class="chan-card" onclick="playVideo('SABC 1', 'https://www.youtube.com/embed/live_stream?channel=UC8yH-uI81UUtEMDsowQ01pA', false)">SABC 1</button>
-                <button class="chan-card" onclick="playVideo('SABC 2', 'https://www.youtube.com/embed/live_stream?channel=UC8yH-uI81UUtEMDsowQ01pA', false)">SABC 2</button>
-                <button class="chan-card" onclick="playVideo('eTV', 'https://www.youtube.com/embed/live_stream?channel=UC8yH-uI81UUtEMDsowQ01pA', false)">eTV</button>
+            <div class="player-controls">
+                <button id="dl-btn" class="btn-download">⬇ Download Movie</button>
             </div>
         </section>
 
+        <!-- Live TV Row -->
+        <section class="content-row" id="tv">
+            <h2>📺 Live Channels</h2>
+            <div class="channel-grid">
+                <div class="chan-card" onclick="playVideo('SABC 1', 'https://www.youtube.com/embed/live_stream?channel=UC8yH-uI81UUtEMDsowQ01pA')">SABC 1</div>
+                <div class="chan-card" onclick="playVideo('eTV', 'https://www.youtube.com/embed/live_stream?channel=UC8yH-uI81UUtEMDsowQ01pA')">eTV</div>
+                <div class="chan-card" onclick="playVideo('SABC 2', 'https://www.youtube.com/embed/live_stream?channel=UC8yH-uI81UUtEMDsowQ01pA')">SABC 2</div>
+            </div>
+        </section>
+
+        <!-- Movies Row -->
         <section class="content-row" id="movies">
             <h2>🔥 Trending Now</h2>
             <div id="movie-display" class="movie-grid"></div>
