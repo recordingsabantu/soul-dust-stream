@@ -84,3 +84,28 @@ nav a:hover {
     border-radius: 6px;
     font-size: 1rem;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.hero-btn:hover {
+    background: #ff1f29;
+    transform: scale(1.05);
+}
+
+.live-tv,
+.movies {
+    padding: 40px 60px;
+}
+
+.section-header {
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    font-size: 1.8rem;
+}
+
+.channels {
+    display: flex;
+    gap: 15px;
+}
