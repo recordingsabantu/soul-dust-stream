@@ -1,34 +1,45 @@
-// Function to scroll down to movies
-function scrollToMovies() {
-    document.getElementById('movies').scrollIntoView();
+/* Fix for the fixed navbar overlapping content */
+body {
+    padding-top: 80px; 
 }
 
-// Function to handle the video player
-function playLive(name, url) {
-    const wrapper = document.getElementById('video-wrapper');
-    wrapper.innerHTML = `
-        <h3 style="margin-bottom:20px; color: #e50914;">Now Playing: ${name}</h3>
-        <iframe src="${url}" frameborder="0" allowfullscreen></iframe>
-    `;
-    document.getElementById('player-zone').scrollIntoView();
+/* Make the video player responsive (16:9 aspect ratio) */
+.video-responsive {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
 }
 
-// Add some placeholder movies to the grid
-const movieDisplay = document.getElementById('movie-display');
-const sampleMovies = [
-    { title: "Trending Now", img: "https://via.placeholder.com/200x300/e50914/ffffff?text=Soul+Dust+1" },
-    { title: "New Releases", img: "https://via.placeholder.com/200x300/222222/ffffff?text=Soul+Dust+2" },
-    { title: "South African Hits", img: "https://via.placeholder.com/200x300/e50914/ffffff?text=Soul+Dust+3" }
-];
+.video-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 
-sampleMovies.forEach(movie => {
-    const card = document.createElement('div');
-    card.style.background = "#1a1a1a";
-    card.style.borderRadius = "8px";
-    card.style.overflow = "hidden";
-    card.innerHTML = `
-        <img src="${movie.img}" style="width:100%">
-        <p style="padding:10px; font-size:14px;">${movie.title}</p>
-    `;
-    movieDisplay.appendChild(card);
-});
+/* Movie Card Styling */
+.movie-card {
+    background: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+.movie-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.movie-info {
+    padding: 10px;
+    text-align: center;
+}
