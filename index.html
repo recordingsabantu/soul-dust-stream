@@ -3,59 +3,61 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SOUL DUST MOVIES</title>
-    <!-- This line tells the browser to look for your CSS file -->
+    <title>SOUL DUST MOVIES | Premium Streaming</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header class="navbar">
+    <header class="navbar" id="navbar">
         <div class="logo">SOUL DUST</div>
         <nav>
             <a href="#">Home</a>
-            <a href="#movies">Movies</a>
             <a href="#tv">Live TV</a>
+            <a href="#movies">Movies</a>
+            <a href="#download-section">Downloads</a>
         </nav>
     </header>
 
     <section class="hero">
-        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Unlimited Movies & Entertainment</h1>
-            <p>Watch trending movies and South African live TV.</p>
-            <button onclick="scrollToMovies()" class="hero-btn">▶ Watch Now</button>
+            <span class="trending-tag">#1 IN SOUTH AFRICA TODAY</span>
+            <h1>Unlimited Movies & Live TV</h1>
+            <p>Experience the best of Mzansi and global entertainment in 4K.</p>
+            <div class="hero-btns">
+                <button onclick="scrollToMovies()" class="btn-primary">▶ Play Now</button>
+                <button class="btn-secondary">＋ My List</button>
+            </div>
         </div>
     </section>
 
-    <section class="live-tv" id="tv">
-        <div class="section-header">
-            <h2>📺 Live TV</h2>
-        </div>
-        <div class="channels">
-            <!-- These call functions inside your script.js -->
-            <button class="chan-btn" onclick="playLive('SABC 1', 'https://www.youtube.com/embed/live_stream?channel=SABC1')">SABC 1</button>
-            <button class="chan-btn" onclick="playLive('SABC 2', 'https://www.youtube.com/embed/live_stream?channel=SABC2')">SABC 2</button>
-            <button class="chan-btn" onclick="playLive('eTV', 'https://www.youtube.com/embed/live_stream?channel=ETV')">eTV</button>
-        </div>
-    </section>
+    <main>
+        <section id="player-zone" class="player-section hidden">
+            <div class="section-header">
+                <h2 id="now-playing-title">Now Playing</h2>
+                <button class="close-player" onclick="closePlayer()">✕ Close</button>
+            </div>
+            <div id="video-wrapper"></div>
+            <div class="player-actions">
+                <button id="download-btn" class="btn-download">⬇ Download Movie</button>
+            </div>
+        </main>
 
-    <section class="movies" id="movies">
-        <div class="section-header">
-            <h2>🔥 Trending Movies</h2>
-        </div>
-        <div id="movie-display" class="movie-grid"></div>
-    </section>
+        <section class="content-row" id="tv">
+            <h2>📺 Live Channels</h2>
+            <div class="channel-grid">
+                <button class="chan-card" onclick="playVideo('SABC 1', 'https://www.youtube.com/embed/live_stream?channel=UC8yH-uI81UUtEMDsowQ01pA', false)">SABC 1</button>
+                <button class="chan-card" onclick="playVideo('SABC 2', 'https://www.youtube.com/embed/live_stream?channel=UC8yH-uI81UUtEMDsowQ01pA', false)">SABC 2</button>
+                <button class="chan-card" onclick="playVideo('eTV', 'https://www.youtube.com/embed/live_stream?channel=UC8yH-uI81UUtEMDsowQ01pA', false)">eTV</button>
+            </div>
+        </section>
 
-    <div id="player-zone" class="player-container">
-        <div id="video-wrapper">
-            <p style="color:white;">Select a channel to start watching.</p>
-        </div>
-    </div>
+        <section class="content-row" id="movies">
+            <h2>🔥 Trending Now</h2>
+            <div id="movie-display" class="movie-grid"></div>
+        </section>
+    </main>
 
-    <!-- This line tells the browser to run your JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
